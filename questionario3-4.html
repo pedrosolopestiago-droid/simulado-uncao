@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questionário 3 — Unção</title>
+  <meta name="description" content="Questionário 3 com 20 questões de Verdadeiro ou Falso.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html"><div class="brand-mark">U</div>Unção • Fixação</a>
+      <a class="nav-link" href="index.html">← Escolher outro questionário</a>
+    </div>
+  </div>
+
+  <main class="quiz-shell">
+    <div class="container">
+      <img class="hero-banner" src="wide_horizontal_banner_graphic_with_a_clean_modern.png" alt="Unção — Questões de Fixação">
+
+      <div class="quiz-head">
+        <div>
+          <span class="eyebrow">Questionário 3 de 3</span>
+          <h1>Questionário 3</h1>
+          <p>20 questões • Verdadeiro ou Falso • explicação imediata após a resposta</p>
+        </div>
+        <a class="home-btn" href="index.html">Página inicial</a>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-label">Questão</div>
+          <div class="stat-value"><span id="answered">0</span>/20 respondidas</div>
+        </div>
+        <div>
+          <div class="stat-label">Progresso</div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+        <div>
+          <div class="stat-label">Acertos</div>
+          <div class="stat-value"><span id="hits">0</span></div>
+        </div>
+      </div>
+
+      <div id="quiz"></div>
+
+      <div class="controls">
+        <button class="control secondary" id="resetBtn">Refazer questionário</button>
+        <button class="control primary" id="finishBtn">Finalizar e ver resultado</button>
+      </div>
+
+      <section class="result" id="result"></section>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container">RHEMA • Questões de Fixação — Unção</div></footer>
+
+<script>
+const questions = [{"n": 41, "q": "Reinar em vida significa que o cristão não enfrentará dificuldades, perseguições ou tribulações.", "a": "F", "e": "Reinar não significa ausência de dificuldades, mas possuir domínio em meio a elas por causa da posição recebida em Cristo."}, {"n": 42, "q": "Todos os crentes podem atuar no espírito de profecia, mas isso não significa que todos ocupem o ofício de profeta.", "a": "V", "e": "Existe diferença entre uma manifestação profética acessível aos crentes e o chamado permanente para o ofício de profeta."}, {"n": 43, "q": "Depois de ser cheio do Espírito Santo uma vez, o cristão não precisa buscar novos enchimentos.", "a": "F", "e": "O enchimento deve ser contínuo. Efésios 5:18 comunica a ideia de permanecer sendo cheio."}, {"n": 44, "q": "Ser cheio da Palavra e ser cheio do Espírito produzem frutos que se confirmam mutuamente.", "a": "V", "e": "Palavra e Espírito não competem. Onde a Palavra habita ricamente, o Espírito enche; e o Espírito sempre concorda com a Palavra."}, {"n": 45, "q": "A expressão “enchei-vos do Espírito” em Efésios 5:18 apresenta o enchimento como uma ação contínua.", "a": "V", "e": "A ideia é permanecer sendo cheio continuamente, fazendo disso um estilo de vida."}, {"n": 46, "q": "Os mesmos discípulos que foram cheios do Espírito no Pentecostes foram novamente cheios em Atos 4.", "a": "V", "e": "Em Atos 4:31, eles foram novamente cheios e anunciaram a Palavra de Deus com intrepidez."}, {"n": 47, "q": "Falar em salmos, cantar hinos e cânticos espirituais, dar graças e sujeitar-se uns aos outros estão relacionados ao enchimento do Espírito.", "a": "V", "e": "Essas práticas aparecem em Efésios 5:18-21 associadas à vida continuamente cheia do Espírito."}, {"n": 48, "q": "Na Igreja Primitiva, estar cheio do Espírito era uma exigência apenas para quem pregava ou liderava publicamente.", "a": "F", "e": "Em Atos 6, estar cheio do Espírito e de sabedoria foi requisito até para pessoas escolhidas para um serviço prático na comunidade."}, {"n": 49, "q": "A unção ministerial é uma capacitação específica para o cargo ou função para a qual uma pessoa foi chamada.", "a": "V", "e": "Cada ofício ministerial possui uma unção específica que capacita o ministro para desempenhá-lo."}, {"n": 50, "q": "Todo ministro chamado por Deus deve exercer os cinco dons ministeriais ao mesmo tempo.", "a": "F", "e": "Uma pessoa pode exercer mais de um cargo quando possui unção para isso, mas somente Jesus exerceu todos os cargos."}, {"n": 51, "q": "Apóstolo, profeta, evangelista, pastor e mestre são os cinco dons ministeriais apresentados em Efésios 4:11.", "a": "V", "e": "Cada um representa uma função específica no Corpo de Cristo e possui uma capacitação correspondente."}, {"n": 52, "q": "A pessoa escolhe seu chamado ministerial de acordo com a função com a qual mais se identifica.", "a": "F", "e": "O chamado vem de Deus e precede a capacitação. A unção capacita a pessoa para cumprir aquilo para o qual foi chamada."}, {"n": 53, "q": "Associação, ambiente e influência podem contribuir para que uma pessoa entre e amadureça em seu chamado.", "a": "V", "e": "A proximidade e o serviço junto de pessoas que já caminham naquele chamado favorecem formação, amadurecimento e aprendizado."}, {"n": 54, "q": "Nos exemplos de Eliseu, Josué, Timóteo e dos discípulos de Jesus, o comissionamento público aconteceu antes do período de serviço e formação.", "a": "F", "e": "O padrão apresentado é serviço e proximidade antes do comissionamento público. A formação precede a função reconhecida."}, {"n": 55, "q": "No comissionamento ministerial, a imposição de mãos pode confirmar e ativar publicamente aquilo que Deus já havia estabelecido na pessoa.", "a": "V", "e": "A imposição de mãos não cria o chamado. Ela pode funcionar como confirmação pública e ativação do que Deus já estabeleceu."}, {"n": 56, "q": "Pregar e ensinar possuem objetivos diferentes e podem operar por unções distintas.", "a": "V", "e": "Pregar envolve proclamar, inspirar e mover à ação. Ensinar envolve explicar, esclarecer e estabelecer fundamentos."}, {"n": 57, "q": "Estudo da Palavra, oração, obediência e adoração pessoal ajudam a manter a sensibilidade à unção.", "a": "V", "e": "Essas práticas cultivam comunhão, conhecimento, submissão a Deus e sensibilidade espiritual."}, {"n": 58, "q": "Resultados ministeriais positivos dão ao cristão liberdade para negligenciar questões de caráter e santidade.", "a": "F", "e": "A unção não é licença para o pecado. Pureza, santidade, integridade e bom testemunho são fundamentais para preservar seu fluir."}, {"n": 59, "q": "Falta de oração, orgulho, incredulidade e desobediência podem limitar o fluir da unção.", "a": "V", "e": "Essas atitudes comprometem a eficácia, a clareza e o poder com que o Espírito pode fluir através da vida do crente."}, {"n": 60, "q": "A história de Sansão termina demonstrando apenas as consequências de sua desobediência, sem apresentar possibilidade de restauração.", "a": "F", "e": "Depois de sua queda, Sansão voltou a orar e Deus respondeu. Sua força retornou para um último ato, mostrando também a possibilidade de restauração mediante arrependimento."}];
+const answers = {};
+
+function renderQuiz() {
+  const wrap = document.getElementById('quiz');
+  wrap.innerHTML = '';
+
+  questions.forEach((item, idx) => {
+    const card = document.createElement('section');
+    card.className = 'question-card';
+    card.innerHTML = `
+      <div class="q-index">Questão ${item.n}</div>
+      <div class="question-text">${item.q}</div>
+      <div class="options">
+        <button class="option" data-value="V">Verdadeiro</button>
+        <button class="option" data-value="F">Falso</button>
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    `;
+
+    card.querySelectorAll('.option').forEach(btn => {
+      btn.addEventListener('click', () => choose(idx, btn.dataset.value, card));
+    });
+    wrap.appendChild(card);
+  });
+  updateStats();
+}
+
+function choose(idx, value, card) {
+  answers[idx] = value;
+  const item = questions[idx];
+
+  card.querySelectorAll('.option').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.value === value);
+  });
+
+  const feedback = card.querySelector('.feedback');
+  const correct = value === item.a;
+  feedback.className = 'feedback ' + (correct ? 'ok' : 'bad');
+  feedback.innerHTML = `<strong>${correct ? 'Correto ✅' : 'Incorreto ❌'}</strong><br>${item.e}`;
+  updateStats();
+}
+
+function updateStats() {
+  const answered = Object.keys(answers).length;
+  let hits = 0;
+  questions.forEach((q, i) => { if (answers[i] === q.a) hits++; });
+  document.getElementById('answered').textContent = answered;
+  document.getElementById('hits').textContent = hits;
+  document.getElementById('progressBar').style.width = ((answered / questions.length) * 100) + '%';
+}
+
+document.getElementById('finishBtn').addEventListener('click', () => {
+  let score = 0;
+  questions.forEach((q, i) => { if (answers[i] === q.a) score++; });
+  const answered = Object.keys(answers).length;
+  const pct = Math.round(score / questions.length * 100);
+
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <span class="eyebrow">Resultado final</span>
+    <h2>Você acertou</h2>
+    <div class="score">${score}/20</div>
+    <p><strong>${pct}% de aproveitamento</strong><br>Questões respondidas: ${answered} de 20.</p>
+    <div class="result-actions">
+      <button class="again" onclick="resetQuiz()">Refazer este questionário</button>
+      <a class="back" href="index.html">Voltar para o início</a>
+    </div>
+  `;
+  result.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+function resetQuiz() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.getElementById('result').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+
+renderQuiz();
+</script>
+</body>
+</html>
