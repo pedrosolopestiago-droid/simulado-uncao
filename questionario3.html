@@ -186,8 +186,8 @@ a{text-decoration:none;color:inherit}
           <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
         </div>
         <div>
-          <div class="stat-label">Acertos</div>
-          <div class="stat-value"><span id="hits">0</span></div>
+          <div class="stat-label">Resultado</div>
+          <div class="stat-value" id="resultStatus">Disponível ao finalizar</div>
         </div>
       </div>
 
@@ -245,10 +245,7 @@ function choose(idx, value, card) {
 
 function updateStats() {
   const answered = Object.keys(answers).length;
-  let hits = 0;
-  questions.forEach((q, i) => { if (answers[i] === q.a) hits++; });
-  document.getElementById('answered').textContent = answered;
-  document.getElementById('hits').textContent = hits;
+document.getElementById('answered').textContent = answered;
   document.getElementById('progressBar').style.width = ((answered / questions.length) * 100) + '%';
 }
 
@@ -280,6 +277,8 @@ document.getElementById('finishBtn').addEventListener('click', () => {
 
   const pct = Math.round(score / questions.length * 100);
   updateStats();
+  const rs = document.getElementById('resultStatus');
+  if (rs) rs.textContent = `${score}/20 • ${pct}%`;
 
   const result = document.getElementById('result');
   result.style.display = 'block';
@@ -300,6 +299,8 @@ document.getElementById('finishBtn').addEventListener('click', () => {
 function resetQuiz() {
   Object.keys(answers).forEach(k => delete answers[k]);
   document.getElementById('result').style.display = 'none';
+  const rs = document.getElementById('resultStatus');
+  if (rs) rs.textContent = 'Disponível ao finalizar';
   renderQuiz();
   window.scrollTo({top:0,behavior:'smooth'});
 }
