@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Questionário 2 — Unção</title>
+  <meta name="description" content="Questionário 2 com 20 questões de Verdadeiro ou Falso.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html"><div class="brand-mark">U</div>Unção • Fixação</a>
+      <a class="nav-link" href="index.html">← Escolher outro questionário</a>
+    </div>
+  </div>
+
+  <main class="quiz-shell">
+    <div class="container">
+      <img class="hero-banner" src="assets/banner-uncao.png" alt="Unção — Questões de Fixação">
+
+      <div class="quiz-head">
+        <div>
+          <span class="eyebrow">Questionário 2 de 3</span>
+          <h1>Questionário 2</h1>
+          <p>20 questões • Verdadeiro ou Falso • explicação imediata após a resposta</p>
+        </div>
+        <a class="home-btn" href="index.html">Página inicial</a>
+      </div>
+
+      <div class="stats">
+        <div>
+          <div class="stat-label">Questão</div>
+          <div class="stat-value"><span id="answered">0</span>/20 respondidas</div>
+        </div>
+        <div>
+          <div class="stat-label">Progresso</div>
+          <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        </div>
+        <div>
+          <div class="stat-label">Acertos</div>
+          <div class="stat-value"><span id="hits">0</span></div>
+        </div>
+      </div>
+
+      <div id="quiz"></div>
+
+      <div class="controls">
+        <button class="control secondary" id="resetBtn">Refazer questionário</button>
+        <button class="control primary" id="finishBtn">Finalizar e ver resultado</button>
+      </div>
+
+      <section class="result" id="result"></section>
+    </div>
+  </main>
+
+  <footer class="footer"><div class="container">RHEMA • Questões de Fixação — Unção</div></footer>
+
+<script>
+const questions = [{"n": 21, "q": "O esvaziamento de Cristo significa que Jesus deixou de possuir Sua natureza divina enquanto esteve na Terra.", "a": "F", "e": "Jesus não deixou de ser Deus. Ele abriu mão do uso independente de Seus atributos e viveu como homem dependente do Pai e do Espírito."}, {"n": 22, "q": "Jesus realizou Seu ministério como homem revestido pelo poder do Espírito Santo.", "a": "V", "e": "Sua vida ministerial demonstra a atuação de um homem ungido e dependente do Espírito."}, {"n": 23, "q": "As “obras maiores” mencionadas em João 14:12 significam que os cristãos fariam obras superiores às de Jesus em qualidade e dignidade.", "a": "F", "e": "A ideia está relacionada à extensão e ao alcance da obra, realizada através de muitos crentes em diferentes lugares."}, {"n": 24, "q": "Jesus exerceu os cinco dons ministeriais: apóstolo, profeta, evangelista, pastor e mestre.", "a": "V", "e": "Jesus é apresentado exercendo todos esses ofícios e recebeu o Espírito sem medida."}, {"n": 25, "q": "Os dois propósitos da unção — separar e habilitar — continuam presentes na Nova Aliança.", "a": "V", "e": "A unção continua consagrando o crente para Deus e capacitando-o para realizar Sua obra."}, {"n": 26, "q": "A unção dentro está relacionada à consagração, enquanto a unção sobre está relacionada à capacitação.", "a": "V", "e": "A unção interior separa o crente para Deus; a unção sobre o reveste de poder para servir e testemunhar."}, {"n": 27, "q": "A unção interior é uma recompensa recebida apenas depois de muitos anos de maturidade cristã.", "a": "F", "e": "Todo aquele que nasce de novo recebe o Espírito Santo e, por isso, já possui a unção interior."}, {"n": 28, "q": "A unção interior permanece, garante a herança e marca o crente como propriedade de Deus.", "a": "V", "e": "As imagens de chrisma, penhor e selo expressam permanência, garantia e pertencimento."}, {"n": 29, "q": "Ao dizer que o crente é templo de Deus, Paulo o identifica com o lugar da habitação do Espírito.", "a": "V", "e": "O termo naos refere-se ao santuário interior, destacando que a presença de Deus agora habita no crente."}, {"n": 30, "q": "Novo nascimento e batismo no Espírito Santo possuem exatamente a mesma finalidade.", "a": "F", "e": "O novo nascimento está relacionado à comunhão com Deus e à vida eterna; o batismo no Espírito está relacionado ao poder para serviço e testemunho."}, {"n": 31, "q": "A “fonte” representa a vida interior recebida no novo nascimento, enquanto os “rios” representam algo que flui para alcançar outras pessoas.", "a": "V", "e": "A fonte jorra para a vida eterna; os rios de água viva fluem para fora, alcançando outros."}, {"n": 32, "q": "João 20 e Atos 2 apresentam dois momentos distintos na experiência dos discípulos com o Espírito Santo.", "a": "V", "e": "Em João 20 eles recebem o Espírito Santo; em Atos 2 recebem o revestimento de poder."}, {"n": 33, "q": "O primeiro contato do homem com a unção acontece no novo nascimento.", "a": "V", "e": "Ao nascer de novo, o homem torna-se habitação do Espírito Santo e passa a ser um ser ungido."}, {"n": 34, "q": "O Espírito Santo como Parakletos atua somente como Consolador nos momentos de sofrimento.", "a": "F", "e": "Ele é apresentado como Ajudador, Consolador, Conselheiro, Intercessor, Advogado de Defesa, Amigo Fiel e Fortalecedor."}, {"n": 35, "q": "Somente apóstolos, evangelistas e pastores receberam a responsabilidade de anunciar o Evangelho.", "a": "F", "e": "Todos os crentes são chamados a testemunhar de Cristo e são ministros da reconciliação."}, {"n": 36, "q": "O Espírito Santo sempre direciona a atenção para Jesus Cristo.", "a": "V", "e": "Ele testemunha de Jesus e glorifica Cristo, em vez de colocar o foco sobre o ministro, a experiência ou o fenômeno."}, {"n": 37, "q": "Cristo é o único que reúne plenamente os ofícios de profeta, sacerdote e rei.", "a": "V", "e": "Esses ofícios permaneciam separados no Antigo Testamento, mas encontram seu cumprimento completo em Cristo."}, {"n": 38, "q": "O sacrifício de Jesus resolveu definitivamente o problema do pecado, não necessitando ser repetido anualmente.", "a": "V", "e": "Diferentemente dos sacrifícios repetidos da Antiga Aliança, Cristo ofereceu um sacrifício de uma vez por todas."}, {"n": 39, "q": "Como sacerdotes, os crentes podem interceder por outras pessoas diante de Deus.", "a": "V", "e": "Interceder envolve representar outra pessoa e colocar-se diante de Deus em favor dela."}, {"n": 40, "q": "O crente somente exercerá sua posição de rei depois que estiver no céu.", "a": "F", "e": "Romanos 5:17 apresenta os que recebem a abundância da graça e o dom da justiça reinando em vida por meio de Jesus Cristo."}];
+const answers = {};
+
+function renderQuiz() {
+  const wrap = document.getElementById('quiz');
+  wrap.innerHTML = '';
+
+  questions.forEach((item, idx) => {
+    const card = document.createElement('section');
+    card.className = 'question-card';
+    card.innerHTML = `
+      <div class="q-index">Questão ${item.n}</div>
+      <div class="question-text">${item.q}</div>
+      <div class="options">
+        <button class="option" data-value="V">Verdadeiro</button>
+        <button class="option" data-value="F">Falso</button>
+      </div>
+      <div class="feedback" id="feedback-${idx}"></div>
+    `;
+
+    card.querySelectorAll('.option').forEach(btn => {
+      btn.addEventListener('click', () => choose(idx, btn.dataset.value, card));
+    });
+    wrap.appendChild(card);
+  });
+  updateStats();
+}
+
+function choose(idx, value, card) {
+  answers[idx] = value;
+  const item = questions[idx];
+
+  card.querySelectorAll('.option').forEach(btn => {
+    btn.classList.toggle('selected', btn.dataset.value === value);
+  });
+
+  const feedback = card.querySelector('.feedback');
+  const correct = value === item.a;
+  feedback.className = 'feedback ' + (correct ? 'ok' : 'bad');
+  feedback.innerHTML = `<strong>${correct ? 'Correto ✅' : 'Incorreto ❌'}</strong><br>${item.e}`;
+  updateStats();
+}
+
+function updateStats() {
+  const answered = Object.keys(answers).length;
+  let hits = 0;
+  questions.forEach((q, i) => { if (answers[i] === q.a) hits++; });
+  document.getElementById('answered').textContent = answered;
+  document.getElementById('hits').textContent = hits;
+  document.getElementById('progressBar').style.width = ((answered / questions.length) * 100) + '%';
+}
+
+document.getElementById('finishBtn').addEventListener('click', () => {
+  let score = 0;
+  questions.forEach((q, i) => { if (answers[i] === q.a) score++; });
+  const answered = Object.keys(answers).length;
+  const pct = Math.round(score / questions.length * 100);
+
+  const result = document.getElementById('result');
+  result.style.display = 'block';
+  result.innerHTML = `
+    <span class="eyebrow">Resultado final</span>
+    <h2>Você acertou</h2>
+    <div class="score">${score}/20</div>
+    <p><strong>${pct}% de aproveitamento</strong><br>Questões respondidas: ${answered} de 20.</p>
+    <div class="result-actions">
+      <button class="again" onclick="resetQuiz()">Refazer este questionário</button>
+      <a class="back" href="questionario3.html">Ir para o próximo questionário</a>
+    </div>
+  `;
+  result.scrollIntoView({behavior:'smooth', block:'center'});
+});
+
+function resetQuiz() {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  document.getElementById('result').style.display = 'none';
+  renderQuiz();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.getElementById('resetBtn').addEventListener('click', resetQuiz);
+
+renderQuiz();
+</script>
+</body>
+</html>
